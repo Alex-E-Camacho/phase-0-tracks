@@ -8,7 +8,7 @@ Version control allows one to track the progress of file(s) through its history.
 
 * What is a branch and why would you use one?
 
-A branch is a copy of a file or folder that allows you to manipulate information in it without affecting the original files/folders. You would use one to see the outcome of changes to the original files (master) and make sure they don't cause problems before you merge them to the original file/folder.
+A branch is a copy of a file/folder that allows you to manipulate information in it without affecting the original files/folders. You would use one to see the outcome of changes to the original files (master) and make sure they don't cause problems before you merge them to the original file/folder.
 
 * What is a commit? What makes a good commit message?
 
