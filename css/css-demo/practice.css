@@ -1,0 +1,22 @@
+#contact-info {
+  font-size: 0.8em;
+}
+
+.job {
+  background-color: #e9e5dc;
+  border-radius: 25px;
+  padding: 5px;
+  margin: 10px 5px 6px 4px;
+}
+
+.job:hover li:before {
+  content: "hello! ";
+}
+
+.job li:nth-child(2) {
+  color: red;
+}
+
+.accomplishments {
+  font-size: 0.8em;
+}
