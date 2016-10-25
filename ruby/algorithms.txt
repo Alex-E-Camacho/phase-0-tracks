@@ -1,0 +1,39 @@
+Robot Elevator
+
+- Ask if going up or down
+	- If going up, press up button
+	- Or else, press down button
+		- Otherwise, if already on said floor, do nothing.
+- If going up or down, enter elevator
+- Ask what floor is needed
+- Press button with floor number matching response
+
+Laundry
+
+Divide money between paper cash and quarters
+	- If number of quartes is greater than 26, proceed to load laundry
+	- Otherwise, exchange paper cash for quarters in increments of $1 bills
+Load dirty laundry inside washing machine
+Close and lock washing machine door
+Choose water temperature
+Pour liquid detergent into measuring cap
+	-If load is large, fill to top line
+	-or if it is medium, fill halfway to the top line
+	- or else, fill to the lower line
+Insert number of quarters specified by washing machine size
+When the number of quarters needed has been met, the water will start running
+Pour detergent into detergent slot
+Wait until the machines buzzes, signaling the wash is done
+Open door, move wet laundry to a basket
+Move from basket over to a dryer
+Separate hang dry clothes from machine dry clothes
+	-If clothing is button up shirt and has never been machine dried before, place in laundry bag
+	-If clothing is t-shirt and has never been machine dried before, place in laundry bag
+	-If clothing is a knitted sweater, place in laundry bag
+	-All else, place in drying machine
+Add 7 quarters for 48 minutes of drying
+While 48 minutes are counting down, place wet clothing from laundry bag on hangers to air dry
+After 48 minutes have passed, remove dried clothes
+Fold dried clothes
+Place in laundry bag
+Done!
