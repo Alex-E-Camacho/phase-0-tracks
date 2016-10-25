@@ -1,0 +1,7 @@
+- Ask if going up or down
+	- If going up, press up button
+	- Or else, press down button
+		- Otherwise, if already on said floor, do nothing.
+- If going up or down, enter elevator
+- Ask what floor is needed
+- Press button with floor number matching response
