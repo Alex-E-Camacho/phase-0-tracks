@@ -13,12 +13,12 @@ puts "What year were you born?"
 birth_year = gets.chomp.to_i
 
 # Ask employee if they will want garlic bread 
-puts "Our company cafeteria servers garlic bread. Should we order some for you?"
-wants_garlic_bread = gets.chomp
+puts "Our company cafeteria servers garlic bread. Should we order some for you? (y or n)"
+garlic_bread = gets.chomp.downcase
 
 # Ask employee if they will want to enroll in company health insurance
-puts "Would you like to enroll in the company's health insurance?"
-wants_health_insurance = gets.chomp
+puts "Would you like to enroll in the company's health insurance? (y or n)"
+health_insurance = gets.chomp.downcase
 
 
 # Did the employee get their age right?
@@ -40,4 +40,27 @@ age_check = current_year - birth_year
 		correct_age = false
 	end
 
+# Convert garlic_bread and health_insurance into booleans
 
+# Turn garlic_bread"yes" responses to true and "no" responses to false 
+
+# If garlic_bread response is "y", then will_eat_garlic is true
+# or else will_eat_garlic is false
+
+	if garlic_bread == "y"
+		will_eat_garlic = true
+	elsif garlic_bread == "n" 
+		will_eat_garlic = false
+	end
+
+# If health_insurance is equal to "y", will_get_insurance is true
+# or else will_get_insurance is false
+
+	if health_insurance == "y"
+		will_get_insurance = true
+	elsif health_insurance == "n"
+		will_get_insurance = false
+	end
+
+
+							
