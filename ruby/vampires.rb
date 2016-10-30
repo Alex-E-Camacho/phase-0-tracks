@@ -2,7 +2,7 @@
 
 # Ask employee for name
 puts "What is your name?"
-employee_name = gets.chomp
+employee_name = gets.chomp.downcase
 
 # Ask employee how old they are and convert to an integer
 puts "How old are you?"
@@ -62,5 +62,33 @@ age_check = current_year - birth_year
 		will_get_insurance = false
 	end
 
+# Boolean variables:
+# correct_age
+# will_eat_garlic
+# will_get_insurance
+
+# If the employee got their age right, and is willing to eat garlic bread or sign up for insurance, 
+# the result is “Probably not a vampire.”
+#vampire = nil
+vampire_verdict = ""
+catch correct_age do
+	
+	case vampire_verdict
+		when correct_age && (will_eat_garlic || will_get_insurance)
+			vampire_verdict = "Probably not a vampire."
+			redo
+		when correct_age == false && (will_eat_garlic == false || will_get_insurance == false)
+			vampire_verdict = "Probably a vampire"
+		 	redo
+		when correct_age == false && will_eat_garlic == false && will_get_insurance == false
+			vampire_verdict = "Almost certainly a vampire"
+			redo
+		when employee_name == "drake cula" || "tu fang"
+			vampire_verdict = "Definitely a vampire."
+		else vampire_verdict = "Results inconclusive."
+	end
+end
+
+puts vampire_verdict
 
 							
