@@ -77,10 +77,12 @@ until question_cycles == num_of_employees
 
 	# If the employee got their age right, and is willing to eat garlic bread or sign up for insurance, 
 	# the result is “Probably not a vampire.”
-	#vampire = nil
-	vampire_verdict = ""
 
-	case vampire_verdict
+
+
+	# vampire_verdict = nil
+
+	 case #vampire_verdict
 		when correct_age && (will_eat_garlic || will_get_insurance)
 			vampire_verdict = "Probably not a vampire."
 				
@@ -92,10 +94,10 @@ until question_cycles == num_of_employees
 				
 		when employee_name == "drake cula" || "tu fang"
 			vampire_verdict = "Definitely a vampire."
-		else vampire_verdict = "Results inconclusive."
+	# 	else vampire_verdict = "Results inconclusive."
 	end
 
-	puts vampire_verdict
+	 puts vampire_verdict
 	
 question_cycles += 1
 end
