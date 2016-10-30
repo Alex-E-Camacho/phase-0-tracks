@@ -87,10 +87,13 @@ until question_cycles == num_of_employees
 			vampire_verdict = "Probably not a vampire."
 				
 		when correct_age == false && (will_eat_garlic == false || will_get_insurance == false)
-			vampire_verdict = "Probably a vampire"
+			case
+				when will_eat_garlic == false && will_get_insurance == false
+					vampire_verdict = "Almost certainly a vampire"
+				else vampire_verdict = "Probably a vampire"
 			 	
-		when correct_age == false && will_eat_garlic == false && will_get_insurance == false
-			vampire_verdict = "Almost certainly a vampire"
+			 end
+		
 				
 		when employee_name == "drake cula" || "tu fang"
 			vampire_verdict = "Definitely a vampire."
