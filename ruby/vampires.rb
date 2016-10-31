@@ -1,5 +1,7 @@
-question_cycles = 0
+# This is a semi-working product with comments at the end of where I had trouble.
 
+question_cycles = 0
+vampire_verdict = nil
 # Ask how many employees are being processed, convert to integer
 puts "How many employees are being processed?"
 num_of_employees = gets.chomp.to_i
@@ -82,7 +84,7 @@ until question_cycles == num_of_employees
 
 
 	 case 
-	 	# I put the employee_name conditional at the top because after over a day of trial and error I 
+	 	# READ: I put the employee_name conditional at the top because after over a day of trial and error I 
 	 	# couldn't figure out how to make it work while being at the bottom of the conditional
 	 	# list. 
 		when employee_name == "drake cula" || "tu fang" 
@@ -103,7 +105,7 @@ until question_cycles == num_of_employees
 	 	else vampire_verdict = "Results inconclusive."
 	end
 
-		puts vampire_verdict
+	puts vampire_verdict
 	
 
 	 
@@ -111,4 +113,25 @@ until question_cycles == num_of_employees
 question_cycles += 1
 end
 
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
+
+=begin
+I was able to create the if/elsif code for the allergies questions. It stopped when 'done' was entered or stopped and returned "Probably a vampire"
+when 'sunshine' was entered. However, I couldn't figure out where exactly to put it. Also, I'm guessing that having it return "Probably a vampire"	
+from it's own code rather than it being the "Probably a vampire" from the conditional statements below is the wrong approach. I was not able to
+understand how to link it to the conditional statements in the case statements. I'm on day 3 of trying to get this .rb file to work properly
+so I feel this is a good point to stop and hopefully get feedback on where I've gone wrong. Below is the code I wrote for the allergies.
+
+allergies = ""
+
+until allergies == "done"
+	puts "Please name, if any, allergies you may have. Type 'done' when you are finished."
+	allergies = gets.chomp.downcase
+	if allergies == "sunshine"
+		allergies = "done"
+		puts "Probably a vampire"
+	end
+end
+
+=end
 							
