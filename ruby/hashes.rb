@@ -41,3 +41,41 @@ first_time = gets.chomp.downcase
 
 p client_info
 
+puts "Is there any field that needs to be corrected or updated? If not, type 'done'."
+update = gets.chomp.to_sym
+
+# Take user input (which becomes a symbol with .to_sym), plug that into the syntax that 
+# updates key values 
+
+# hash_name[:key] = "updated value"
+# client_info[update] = "correction"
+
+if update == :done
+	update = update.to_s 
+	p client_info
+elsif update  == :name || :theme
+	puts "Enter correction:"
+	correction = gets.chomp
+	client_info[update] = correction
+	p client_info
+elsif update == :age || :rooms || :children
+	puts "Enter number correction:"
+	correction = gets.chomp.to_i
+	client_info[update] = correction
+	p client_info
+elsif update == :first_time
+	puts "Enter Correction (type 'y' for yes or 'n' for no):"
+	correction = gets.chomp
+		if correction == "y"
+		   correction = true
+		elsif correction == "n"
+		   correction = false
+		end
+	client_info[update] = correction
+	p client_info
+end
+		
+
+
+
+
