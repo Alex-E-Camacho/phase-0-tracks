@@ -1,7 +1,7 @@
 # Create the fields and prompts that the interior designer will populate
 # Convert certain strings to integers and booleans
 puts "Enter the client's name:"
-client_name => gets.chomp
+client_name = gets.chomp
 
 puts "What is the client's age?"
 age = gets.chomp.to_i
@@ -18,7 +18,9 @@ num_of_rooms = gets.chomp.to_i
 puts "Is this the client's first time using us? (Type 'y' for yes or 'n' for no)"
 first_time = gets.chomp.downcase
 
-	if first_time == "yes"
+# Convert string into a boolean
+
+	if first_time == "y" || "'y'"
 		first_time = true
 	else
 		first_time = false
@@ -36,3 +38,6 @@ first_time = gets.chomp.downcase
 	first_time: first_time,
 
 }
+
+p client_info
+
