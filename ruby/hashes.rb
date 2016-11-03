@@ -53,12 +53,12 @@ update = gets.chomp.to_sym
 if update == :done
 	update = update.to_s 
 	p client_info
-elsif update  == :name || :theme
+elsif (update  == :name) || (update == :theme) # <-- I know I can make this more DRY but this works for now!
 	puts "Enter correction:"
 	correction = gets.chomp
 	client_info[update] = correction
 	p client_info
-elsif update == :age || :rooms || :children
+elsif (update == :age) || (update == :rooms) || (update == :children)
 	puts "Enter number correction:"
 	correction = gets.chomp.to_i
 	client_info[update] = correction
