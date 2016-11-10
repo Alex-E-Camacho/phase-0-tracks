@@ -12,3 +12,9 @@ class Santa
 	end
 
 end
+
+st_nick = Santa.new
+
+st_nick.speak
+
+st_nick.eat_milk_and_cookies("oreo")
