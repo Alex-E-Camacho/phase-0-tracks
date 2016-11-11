@@ -10,6 +10,13 @@ class TodoList
 		@get_items << n 
 	end  	
 
-	# def delete_items 	
-	# end  
+	def delete_item(n)
+		@get_items.delete(n) 	
+	end  
+
+	def get_item(n)
+		@get_items[n]
+	end
+
 end
+
