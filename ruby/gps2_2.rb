@@ -19,6 +19,7 @@ def create_list(grocery_list_string)
 		grocery_list[i] = 1
 	end
 	print_grocery_list(grocery_list)
+	grocery_list
 end
 
 # Method to add an item to a list
@@ -66,8 +67,8 @@ def print_grocery_list(hash)
 	puts "Current grocery list:"
 	hash.each do |item, qty|
 		puts "#{item}: #{qty}"
+		puts ":::::::::::::"
 	end
-	puts ":::::::::::::"
 end
 
 # Create list
@@ -76,6 +77,8 @@ end
 	items = gets.chomp
 	
 	grocery_list = create_list(items)
+
+	print grocery_list
 
 # Update item quantity
 
@@ -98,5 +101,4 @@ end
 		remove_item(grocery_list, item_to_remove)
 		print_grocery_list(grocery_list)
 	end
-
-print_grocery_list(grocery_list)
+exit 
