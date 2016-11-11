@@ -6,10 +6,9 @@ class TodoList
 	end 	
 
 
-	# def add_items(n) 		
-	# 	@get_items << n 
-	# 	return @get_items 	
-	# end  	
+	def add_item(n) 		
+		@get_items << n 
+	end  	
 
 	# def delete_items 	
 	# end  
