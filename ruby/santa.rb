@@ -17,6 +17,7 @@ class Santa
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 	end
 
+	# Getter methods
 	def age
 		@age = 0
 	end
@@ -27,6 +28,21 @@ class Santa
 
 	def ethnicity
 		puts @ethnicity
+	end
+
+	# Setter methods
+	def celebrate_birthday	
+		@age = @age + 1
+	end
+
+	def get_mad_at(array, deer_name)
+	array.delete_at(array.index(deer_name))
+	array << deer_name
+	print array 
+	end
+
+	def gender=(new_gender)
+		@gender = new_gender
 	end
 end
 
@@ -42,16 +58,35 @@ st_nick = Santa.new("boy", "hispanic")
 
 # puts st_nick.gender
 
-santas = []
+p st_nick.age
 
-santas << Santa.new("man", "white")
-santas << Santa.new("man-ish", "white-ish")
-santas << Santa.new("boy", "hispanic")
+p st_nick.celebrate_birthday
 
-santas.each do |about|
-	about.gender 
-	about.ethnicity
-end
+p st_nick.age 
+
+print st_nick.gender 
+
+st_nick.gender = "girl"
+
+print st_nick.gender 
+
+print st_nick.ranking 
+
+st_nick.get_mad_at((st_nick.ranking), "Rudolph")
+
+print st_nick.ranking 
+
+# santas = []
+
+# santas << Santa.new("man", "white")
+# santas << Santa.new("man-ish", "white-ish")
+# santas << Santa.new("boy", "hispanic")
+
+# santas.each do |about|
+# 	puts about.gender
+# 	puts about.ethnicity
+	
+# end
 
 
 
