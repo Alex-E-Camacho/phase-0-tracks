@@ -48,10 +48,12 @@ santas << Santa.new("man", "white")
 santas << Santa.new("man-ish", "white-ish")
 santas << Santa.new("boy", "hispanic")
 
-santas.each do |what_gender|
-	what_gender.gender
-	what_gender.ethnicity
+santas.each do |about|
+	about.gender 
+	about.ethnicity
 end
+
+
 
 
 
