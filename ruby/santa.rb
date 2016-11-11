@@ -24,6 +24,10 @@ class Santa
 	def gender
 		puts @gender
 	end
+
+	def ethnicity
+		puts @ethnicity
+	end
 end
 
 st_nick = Santa.new("boy", "hispanic")
@@ -44,7 +48,13 @@ santas << Santa.new("man", "white")
 santas << Santa.new("man-ish", "white-ish")
 santas << Santa.new("boy", "hispanic")
 
-puts santas.gender
+santas.each do |what_gender|
+	what_gender.gender
+	what_gender.ethnicity
+end
+
+
+
 
 
 
