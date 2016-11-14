@@ -22,13 +22,13 @@ in the origina word array. Place the guessed letter into the new array at the sa
 
 class WordGame
 	attr_reader :wrong_letters, :guesses_left, :guess_limit_reached, :game_over
-	attr_accessor :guess_limit_reached, :game_over
+	attr_accessor :guess_limit_reached, :game_over, :guesses_left 
 
 	def initialize(word)
 		@word = word.split("") 
 		@hidden_word = Array.new(@word.length, "_")
 		@wrong_letters = []
-		@guess_limit = (word.length + 3)
+		@guess_limit = (@word.length + 3)
 		@guesses_left = (@guess_limit - @wrong_letters.length)
 		@guess_limit_reached = false 
 		@game_over = false 
@@ -37,7 +37,7 @@ class WordGame
 	def compare_letter(letter)
 		if @word.include?(letter)
 			change_letter(letter)
-			#win_game
+			win_game
 		elsif @wrong_letters.include?(letter)
 			puts "You have already guessed that letter"
 		else
@@ -45,6 +45,7 @@ class WordGame
 			@wrong_letters << letter 
 			lose_game
 			puts "You have #{@guesses_left} left!"
+			@guess_limit - 1
 		end
 	end 
 
@@ -52,13 +53,13 @@ class WordGame
 		letter_indices = @word.each_index.select{ |n| @word[n] == letter }  # <--gets the index of each matching letter
 		letter_indices.each { |x| @hidden_word.delete_at(x) }  # <--deletes each dash at the corresponding index using iteration of letter_indices 
 		letter_indices.each { |x| @hidden_word.insert(x, letter) }  #<--inserts corect letter at each index of corresponding letter_indices
-		print @hidden_word.join
+		puts @hidden_word.join
 	end
 
 	def lose_game
 		if @wrong_letters.length == @guess_limit
 			@guess_limit_reached = true
-			exit("Sorry, loser. Game over")
+			puts "Sorry, loser. Game over"
 		else
 			@game_over = false 
 		end
@@ -66,21 +67,32 @@ class WordGame
 
 	def win_game
 		if @hidden_word == @word 
-			exit("Amazing!")
+			@game_over = true
+			puts "Amazing!"
+			exit
 		else
-			game_over = false
+			@game_over = false
 		end
 	end
 end
 
-puts "Enter a word:"
+puts "User 1, enter a word for another user to guess:"
 word = gets.chomp
 
 word = WordGame.new(word) 
 
 until word.game_over
-puts "Enter a letter"
+puts "User 2, enter a letter:"
 guessed_letter = gets.chomp
 word.compare_letter(guessed_letter)
+end
+
+=begin
+	
+I'm not sure why some words work while others don't. For example, "apple" and "try" work, but "test" and "mississippi" dont. I've spent
+nearly a day and a half to get to this point and the deadline is less than an hour away so I am stopping while it works half the time. I also
+was not able to devote enough time to the rspec file. Testing in rspec seemed challenging when working with so many conditional statements as 
+opposed to the simple input/output of basic methods.
+	
 end
 
