@@ -9,8 +9,14 @@ function reverse(word) {
 	wordLetters.forEach(function(letter){
 		reverseWord.unshift(letter)
 	});		
-		console.log(reverseWord.join(''));
+		return reverseWord.join('');
 }
 
-reverse("apple")
-reverse("mississippi")
+var favePie = reverse("apple")
+var longState = reverse("mississippi")
+
+if (1 == 1) {
+	console.log(favePie);
+} else {
+	console.log("ayy");
+}
