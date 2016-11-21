@@ -9,9 +9,13 @@ function longestWord(array) {
 	array.forEach(function(item) {
 		numArray.push(item.length)
 	})
-	return numArray
+	return numArray.sort(sortArray)
 }
 
-var test_array = ["apple", "pie", "sundae"];
+function sortArray(a,b) {
+	return b - a;
+}
+
+var test_array = ["apple", "pie", "sundae", "ice cream"];
 
 console.log(longestWord(test_array));
