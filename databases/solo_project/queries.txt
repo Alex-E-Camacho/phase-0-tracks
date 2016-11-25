@@ -1,0 +1,46 @@
+1a. Command
+
+SELECT * FROM librarians;
+
+1b. Output
+
+1|Margaret Smith|Manhattan Prep|200|true|1
+2|Roy Dejean|Staten Island School of STEM|450|true|5
+3|Karen Morris|James Madison High School|975|false|2
+4|Mike Martinez|Sunnyside Dance and Theater Academy|589|false|3
+5|Betsy Hoover|Bronx School of Mathematics and Science|1174|true|4
+6|Melinda Charlton|Arthur Miller School of Drama and Theater|120|false|1
+
+2. Command
+
+UPDATE librarians SET full_time="true" WHERE name="Karen Morris";
+
+3a. Command
+
+SELECT * FROM librarians, boroughs WHERE librarians.borough_id = boroughs.id;
+
+3b. Output
+
+1|Margaret Smith|Manhattan Prep|200|true|1|1|Manhattan|150|125
+2|Roy Dejean|Staten Island School of STEM|450|true|5|5|Staten Island|110|95
+3|Karen Morris|James Madison High School|975|true|2|2|Brooklyn|225|200
+4|Mike Martinez|Sunnyside Dance and Theater Academy|589|false|3|3|Queens|250|175
+5|Betsy Hoover|Bronx School of Mathematics and Science|1174|true|4|4|The Bronx|275|225
+6|Melinda Charlton|Arthur Miller School of Drama and Theater|120|false|1|1|Manhattan|150|125
+
+4a. Command
+
+SELECT librarians.name, librarians.school, boroughs.id, boroughs.total_schools FROM librarians JOIN boroughs ON librarians.borough_id = boroughs.id;
+
+4b. Output
+
+Margaret Smith|Manhattan Prep|1|150
+Roy Dejean|Staten Island School of STEM|5|110
+Karen Morris|James Madison High School|2|225
+Mike Martinez|Sunnyside Dance and Theater Academy|3|250
+Betsy Hoover|Bronx School of Mathematics and Science|4|275
+Melinda Charlton|Arthur Miller School of Drama and Theater|1|150
+
+5. Command
+
+DELETE FROM librarians WHERE full_time="false";
