@@ -27,7 +27,7 @@ def add_price(db, item_price, list_id)
 end
 
 def delete_row(db, list_id)
-	db.execute("DELETE FROM list WHERE name=?", [list_id])
+	db.execute("DELETE FROM list WHERE id=?", [list_id])
 end
 
 # def update_price(db, new_price, list_name)
@@ -43,6 +43,7 @@ def show_list(db)
 	current_list.each do |row|
 	puts "ID: #{row['id']} | #{row['name']} | #{row['gift']} | #{row['price']}"
 	end
+	puts "---------------------------"
 end
 #add_name(db, "john henry")
 
@@ -56,7 +57,9 @@ loop do
 	puts "3. Add a price to a gift on the list"
 	puts "4. Change the price of a gift"
 	puts "5. Change a gift on the list"
-	puts "6. Show the list and exit"
+	puts "6. Remove someone from the list"
+	puts "7. Show the list"
+	puts "8. Exit"
 	puts "---------------------------"
 	puts "Please type the number of the option you've chosen:"
 	option = gets.chomp.to_i
@@ -74,8 +77,8 @@ loop do
 		 	show_list(db) 
 		 end
 
-	when 2
-		puts "Please type the ID number of the person you would like to add a gift to."
+	when 2, 5
+		puts "Please type the ID number of the person you would like to add (or change) a gift to."
 		show_list(db)
 		id_num = gets.chomp.to_i
 		puts "Please enter the gift."
@@ -84,8 +87,8 @@ loop do
 		puts "#{new_gift} has been added."
 		show_list(db)
 
-	when 3
-		puts "Please type the ID number of the person whose gift you'd like to add a price to."
+	when 3, 4
+		puts "Please type the ID number of the person whose gift you'd like to add (or change) a price to."
 		show_list(db)
 		id_num = gets.chomp.to_i
 		puts "Please enter the gift price, ommiting the $ symbol."
@@ -93,11 +96,20 @@ loop do
 		add_price(db, gift_price, id_num)
 		puts "#{gift_price} has been added."
 		show_list(db)
+
 	when 6
+		puts "Please type the ID number of the person you would like to remove from the list."
 		show_list(db)
+		id_num = gets.chomp.to_i
+		delete_row(db, id_num)
+		show_list(db)
+
+	when 7
+		show_list(db)
+	when 8
 		break
 	else
-		puts "Invalid input. Please type the number of the action you'd like to perform"
+		puts "Invalid input. Please type the number of the action you'd like to perform."
 	end
 
 end
