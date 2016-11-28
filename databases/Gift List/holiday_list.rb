@@ -53,13 +53,11 @@ loop do
 
 	puts "Would you like to:"
 	puts "1. Add new name(s) to the list"
-	puts "2. Add a gift for a name on the list"
-	puts "3. Add a price to a gift on the list"
-	puts "4. Change the price of a gift"
-	puts "5. Change a gift on the list"
-	puts "6. Remove someone from the list"
-	puts "7. Show the list"
-	puts "8. Exit"
+	puts "2. Add/change a gift for a name on the list"
+	puts "3. Add/change a price to a gift on the list"
+	puts "4. Remove someone from the list"
+	puts "5. Show the list"
+	puts "6. Exit"
 	puts "---------------------------"
 	puts "Please type the number of the option you've chosen:"
 	option = gets.chomp.to_i
@@ -77,7 +75,7 @@ loop do
 		 	show_list(db) 
 		 end
 
-	when 2, 5
+	when 2
 		puts "Please type the ID number of the person you would like to add (or change) a gift to."
 		show_list(db)
 		id_num = gets.chomp.to_i
@@ -87,7 +85,7 @@ loop do
 		puts "#{new_gift} has been added."
 		show_list(db)
 
-	when 3, 4
+	when 3
 		puts "Please type the ID number of the person whose gift you'd like to add (or change) a price to."
 		show_list(db)
 		id_num = gets.chomp.to_i
@@ -97,16 +95,16 @@ loop do
 		puts "#{gift_price} has been added."
 		show_list(db)
 
-	when 6
+	when 4
 		puts "Please type the ID number of the person you would like to remove from the list."
 		show_list(db)
 		id_num = gets.chomp.to_i
 		delete_row(db, id_num)
 		show_list(db)
 
-	when 7
+	when 5
 		show_list(db)
-	when 8
+	when 6
 		break
 	else
 		puts "Invalid input. Please type the number of the action you'd like to perform."
