@@ -1,6 +1,7 @@
 require 'sqlite3'
 
 db = SQLite3::Database.new("shopping_list.db")
+db.results_as_hash = true
 
 create_table_cmd = <<-SQL
 	CREATE TABLE IF NOT EXISTS list(
@@ -17,23 +18,86 @@ def add_name(db, new_name)
 	db.execute("INSERT INTO list (name) VALUES (?)", [new_name])
 end
 
-def add_gift(db, new_gift)
-	db.execute("INSERT INTO list (gift) VALUES (?)", [new_gift])
+def add_gift(db, new_gift, list_id)
+	db.execute("UPDATE list SET gift=? WHERE id=?", [new_gift, list_id])
 end
 
-def add_price(db, item_price)
-	db.execute("INSERT INTO list (price) VALUES (?)", [item_price])
+def add_price(db, item_price, list_id)
+	db.execute("UPDATE list SET price=? WHERE id=?", [item_price, list_id])
 end
 
-def delete_row(db, deleted_name)
-	db.execute("DELETE FROM list WHERE name=?", [deleted_name])
+def delete_row(db, list_id)
+	db.execute("DELETE FROM list WHERE name=?", [list_id])
 end
 
-def update_price(db, new_price, list_name)
-	db.execute("UPDATE list SET price=? WHERE name=?", [new_price, list_name])
-end
+# def update_price(db, new_price, list_name)
+# 	db.execute("UPDATE list SET price=? WHERE name=?", [new_price, list_name])
+# end
 
-def update_gift(db, new_gift, list_name)
-	db.execute("UPDATE list SET gift=? WHERE name=?", [new_gift, list_name])
+# def update_gift(db, new_gift, list_name)
+# 	db.execute("UPDATE list SET gift=? WHERE name=?", [new_gift, list_name])
+# end
+
+def show_list(db)
+	current_list = db.execute("Select * FROM list")
+	current_list.each do |row|
+	puts "ID: #{row['id']} | #{row['name']} | #{row['gift']} | #{row['price']}"
+	end
 end
 #add_name(db, "john henry")
+
+puts "Initializing Holiday Shopping List"
+
+loop do
+
+	puts "Would you like to:"
+	puts "1. Add new name(s) to the list"
+	puts "2. Add a gift for a name on the list"
+	puts "3. Add a price to a gift on the list"
+	puts "4. Change the price of a gift"
+	puts "5. Change a gift on the list"
+	puts "6. Show the list and exit"
+	puts "---------------------------"
+	puts "Please type the number of the option you've chosen:"
+	option = gets.chomp.to_i
+
+	case option
+
+	when 1
+		 puts "Please enter the name of the gift recipeint(s). Type 'done' when finished adding names."
+		 new_name = gets.chomp
+		 if new_name != 'done'
+		 	add_name(db, new_name)
+		 	puts "#{new_name} has been added to the list."
+		 	show_list(db)
+		 else name == 'done'
+		 	show_list(db) 
+		 end
+
+	when 2
+		puts "Please type the ID number of the person you would like to add a gift to."
+		show_list(db)
+		id_num = gets.chomp.to_i
+		puts "Please enter the gift."
+		new_gift = gets.chomp
+		add_gift(db, new_gift, id_num)
+		puts "#{new_gift} has been added."
+		show_list(db)
+
+	when 3
+		puts "Please type the ID number of the person whose gift you'd like to add a price to."
+		show_list(db)
+		id_num = gets.chomp.to_i
+		puts "Please enter the gift price, ommiting the $ symbol."
+		gift_price = gets.chomp.to_i
+		add_price(db, gift_price, id_num)
+		puts "#{gift_price} has been added."
+		show_list(db)
+	when 6
+		show_list(db)
+		break
+	else
+		puts "Invalid input. Please type the number of the action you'd like to perform"
+	end
+
+end
