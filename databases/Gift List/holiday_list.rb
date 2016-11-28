@@ -45,6 +45,11 @@ def show_list(db)
 	end
 	puts "---------------------------"
 end
+
+def total_price(db)
+	#cost = db.execute("SELECT SUM(price) AS TotalPrice FROM list")
+	puts "Your total cost is $#{db.execute("SELECT SUM(price) AS TotalPrice FROM list")}." # I can't figure out how to interpolate this correctly
+end
 #add_name(db, "john henry")
 
 puts "Initializing Holiday Shopping List"
@@ -57,7 +62,8 @@ loop do
 	puts "3. Add/change a price to a gift on the list"
 	puts "4. Remove someone from the list"
 	puts "5. Show the list"
-	puts "6. Exit"
+	puts "6. Show sum of prices"
+	puts "7. Exit"
 	puts "---------------------------"
 	puts "Please type the number of the option you've chosen:"
 	option = gets.chomp.to_i
@@ -76,8 +82,8 @@ loop do
 		 end
 
 	when 2
-		puts "Please type the ID number of the person you would like to add (or change) a gift to."
 		show_list(db)
+		puts "Please type the ID number of the person you would like to add (or change) a gift to."
 		id_num = gets.chomp.to_i
 		puts "Please enter the gift."
 		new_gift = gets.chomp
@@ -86,8 +92,8 @@ loop do
 		show_list(db)
 
 	when 3
-		puts "Please type the ID number of the person whose gift you'd like to add (or change) a price to."
 		show_list(db)
+		puts "Please type the ID number of the person whose gift you'd like to add (or change) a price to."		
 		id_num = gets.chomp.to_i
 		puts "Please enter the gift price, ommiting the $ symbol."
 		gift_price = gets.chomp.to_i
@@ -96,8 +102,8 @@ loop do
 		show_list(db)
 
 	when 4
-		puts "Please type the ID number of the person you would like to remove from the list."
 		show_list(db)
+		puts "Please type the ID number of the person you would like to remove from the list."
 		id_num = gets.chomp.to_i
 		delete_row(db, id_num)
 		show_list(db)
@@ -105,6 +111,8 @@ loop do
 	when 5
 		show_list(db)
 	when 6
+		total_price(db)
+	when 7
 		break
 	else
 		puts "Invalid input. Please type the number of the action you'd like to perform."
