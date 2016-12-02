@@ -50,3 +50,12 @@ get '/contact' do
   1600 Pennsylvania Ave <br>
   Washington D.C. 12345"
 end
+
+get '/great_job' do
+  person = params[:person]
+  if person
+  "Great job #{params[:person]}!"
+  else
+  "Good job!"
+  end  
+end
