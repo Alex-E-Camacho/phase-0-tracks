@@ -20,7 +20,12 @@ get '/about/:person' do
 end
 
 get '/:person_1/loves/:person_2' do
-  "#{params[:person_1]} loves #{params[:person_2]}"
+  "#{params[:person_1]} loves #{params[:person_2]}."
+end
+
+get '/:number1/:number2' do
+  sum = (params[:number1].to_i + params[:number2].to_i)
+  sum.to_s
 end
 
 # write a GET route that retrieves
@@ -59,3 +64,6 @@ get '/great_job' do
   "Good job!"
   end  
 end
+
+
+
