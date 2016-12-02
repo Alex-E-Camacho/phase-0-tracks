@@ -20,7 +20,12 @@ get '/about/:person' do
 end
 
 get '/:person_1/loves/:person_2' do
-  "#{params[:person_1]} loves #{params[:person_2]}"
+  "#{params[:person_1]} loves #{params[:person_2]}."
+end
+
+get '/:number1/:number2' do
+  sum = (params[:number1].to_i + params[:number2].to_i)
+  sum.to_s
 end
 
 # write a GET route that retrieves
@@ -44,3 +49,21 @@ get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
+
+get '/contact' do
+  "Bernie Sanders<br>
+  1600 Pennsylvania Ave <br>
+  Washington D.C. 12345"
+end
+
+get '/great_job' do
+  person = params[:person]
+  if person
+  "Great job #{params[:person]}!"
+  else
+  "Good job!"
+  end  
+end
+
+
+
